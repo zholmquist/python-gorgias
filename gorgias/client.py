@@ -36,17 +36,16 @@ class Client(object):
             auth=(self.username, self.api_key),
             **request_kwargs,
         )
-
         return response
 
-    def get(self, path, params=None):
+    def get(self, path, **params):
         return self.request("GET", path, **params)
 
-    def post(self, path, data=None):
+    def post(self, path, **data):
         return self.request("POST", path, **data)
 
-    def delete(self, path, data=None):
+    def delete(self, path, **data):
         return self.request("DELETE", path, **data)
 
-    def put(self, path, params=None, data=None):
+    def put(self, path, params=None, **data):
         return self.request("PUT", path, **data)
