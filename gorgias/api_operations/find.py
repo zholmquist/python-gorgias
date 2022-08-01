@@ -8,6 +8,6 @@ class Find(BaseOperation):
         if not "id" in params:
             return None
 
-        response = self.client.get(f"{resource}/{params['id']}/", {})
+        response = self.client.get(f"{resource}/{params['id']}/", **params)
 
         return self.schema(**response.json())

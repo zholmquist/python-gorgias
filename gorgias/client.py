@@ -13,18 +13,26 @@ class Client(object):
 
         return customer.Customer(self)
 
+    @property
+    def tickets(self):
+        from gorgias.service import ticket
+
+        return ticket.Ticket(self)
+
     def request(self, method, path, **params):
         method = method.upper()
         request_kwargs = {}
 
         if method == "GET":
             request_kwargs["params"] = params
-        elif method == "POST" or method == "PUT":
+        elif method == "POST":
             request_kwargs["data"] = params
-        elif method == "DELETE":
+        elif method == "DELETE" or method == "PUT":
             request_kwargs["json"] = params
         else:
             raise Exception
+
+        print(request_kwargs)
 
         response = requests.request(
             method,
@@ -47,5 +55,5 @@ class Client(object):
     def delete(self, path, **data):
         return self.request("DELETE", path, **data)
 
-    def put(self, path, params=None, **data):
+    def put(self, path, **data):
         return self.request("PUT", path, **data)

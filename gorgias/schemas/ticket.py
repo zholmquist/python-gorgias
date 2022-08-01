@@ -1,10 +1,11 @@
 from datetime import datetime
 from enum import Enum
 from typing import Optional, Union, Any
-from pydantic import BaseModel
+
 from gorgias.schemas.customer import Customer
 from gorgias.schemas.message import Message
 from gorgias.schemas.tag import Tag
+from gorgias.schemas.api_resource import Resource
 
 
 class TicketStatus(str, Enum):
@@ -12,7 +13,7 @@ class TicketStatus(str, Enum):
     closed = "closed"
 
 
-class Ticket(BaseModel):
+class Ticket(Resource):
     id: Union[int, None] = None
     external_id: Optional[Any]
     created_datetime: Optional[datetime]

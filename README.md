@@ -39,6 +39,27 @@ target = gorgias.customers.find(id=39589722)
 merged_customer = gorgias.customers.merge(source, target)
 ```
 
+### Tickets
+```python
+# get all tickets
+gorgias.tickets.all()
+
+# find ticket by ID
+tickets = gorgias.tickets.find(id=10314075)
+
+# update a ticket
+ticket = gorgias.tickets.find(id=11034547)
+ticket.subject = "This is a test with API Client"
+ticket = gorgias.tickets.save(ticket)
+
+# delete a ticket
+ticket = gorgias.tickets.find(id=10314075)
+gorgias.tickets.delete(ticket)
+
+```
+
+
+
 ## TODO
 
 ### Complete API
@@ -47,7 +68,8 @@ merged_customer = gorgias.customers.merge(source, target)
 - [ ] Integration
 - [ ] Message
 - [ ] Rule
-- [ ] Ticket
+- [x] Ticket
+- [ ] Ticket Tags
 - [ ] Tag
 - [ ] User
 

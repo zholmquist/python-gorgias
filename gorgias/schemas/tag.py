@@ -1,13 +1,14 @@
 from datetime import datetime
 from typing import Optional, Union
-from pydantic import BaseModel
+
+from gorgias.schemas.api_resource import Resource
 
 
-class TagDecoration(BaseModel):
+class TagDecoration(Resource):
     color: Optional[str]
 
 
-class Tag(BaseModel):
+class Tag(Resource):
     id: Union[int, None] = None
     created_datetime: Optional[datetime]
     deleted_datetime: Optional[datetime]

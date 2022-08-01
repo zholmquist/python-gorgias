@@ -1,9 +1,9 @@
 from datetime import datetime
 from typing import Optional, Union
-from pydantic import BaseModel
+from gorgias.schemas.api_resource import Resource
 
 
-class Integration(BaseModel):
+class Integration(Resource):
     id: Union[int, None] = None
     uri: Optional[str]
 

@@ -18,11 +18,17 @@ class Save(BaseOperation):
         if not len(obj.changed_attributes):
             return obj
 
-        response = self.client.put(
-            f"{resource}/{obj.id}/",
-            data=obj.json(
-                exclude_unset=True,
-                include=obj.changed_attributes,
-            ),
+        payload = obj.dict(
+            exclude_unset=True,
+            include=obj.changed_attributes,
         )
+
+        response = self.client.put(f"{resource}/{obj.id}/", **payload)
+
+        print("========")
+        print(response.text)
+        print(response.request.url)
+        print(response.request.body)
+        print("========")
+
         return self.schema(**response.json())

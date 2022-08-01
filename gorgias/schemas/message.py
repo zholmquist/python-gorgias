@@ -1,9 +1,9 @@
 from datetime import datetime
 from typing import Optional, Union, Any
-from pydantic import BaseModel
+from gorgias.schemas.api_resource import Resource
 
 
-class Message(BaseModel):
+class Message(Resource):
     id: Union[int, None] = None
     external_id: Optional[Any]
     created_datetime: Optional[datetime]
